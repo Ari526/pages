@@ -67,3 +67,14 @@ class PostsController < ApplicationController
       params.require(:post).permit(:first_name, :last_name, :email, :create_post, :user_id)
     end
 end
+def destroy   
+  @post = pages find(params[:id])   
+  @post.destroy   
+    
+  respond_to do |format|   
+     format.html { redirect_to item_url }   
+     format.json { head :no_content }   
+     format.js   { render :layout => false }   
+  end   
+    
+end  
